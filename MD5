@@ -1,0 +1,8 @@
+10d18737998587e76b4876cb531919ca *DESCRIPTION
+af06b7ea609a9f05ecd189c3ac336052 *NAMESPACE
+c01d1af364945b2858891b65f44eaa65 *R/iRafNet.R
+1d6e5b6c5105c283c3b16a04c0de58b2 *man/iRafNet.Rd
+cceb332b2cbf0d1ed30b2b426e7ff4a1 *src/regTree.c
+51470cdabecf4d7bfd8d95724054e608 *src/regrf.c
+0d5d6e4bc55e6c474380eb07d3f87c2d *src/rf.h
+ed25324cc43d43fb9fd858db97823a1d *src/rfutils.c

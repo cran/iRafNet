@@ -1,0 +1,30 @@
+Package: iRafNet
+Version: 0.1-1
+Date: 2016-01-26
+Title: Integrative Random Forest for Gene Regulatory Network Inference
+Authors@R: c(person("Francesca Petralia", "Developer", role = c("aut", "cre"),
+                     email = "francesca.petralia@mssm.edu"),
+              person("Pei Wang", "Developer", role = "aut"),
+              person("Zhidong Tu", "Developer", role = "aut"),
+              person("Jialiang Yang", "Developer", role = "aut"),
+              person("Adele Cutler", "Developer", role = "ctb"),
+              person("Leo Breiman", "Developer", role = "ctb"),
+              person("Andy Liaw", "Developer", role = "ctb"),
+              person("Matthew Wiener", "Developer", role = "ctb"))
+Depends: R (>= 3.0.0)
+Description: Provides a flexible integrative algorithm that allows information from prior data, such as protein protein interactions and gene knock-down, to be jointly considered for gene regulatory network inference.
+License: GPL (>= 2)
+URL: https://www.r-project.org
+Packaged: 2016-01-27 21:00:16 UTC; petraf01
+Author: Francesca Petralia Developer [aut, cre],
+  Pei Wang Developer [aut],
+  Zhidong Tu Developer [aut],
+  Jialiang Yang Developer [aut],
+  Adele Cutler Developer [ctb],
+  Leo Breiman Developer [ctb],
+  Andy Liaw Developer [ctb],
+  Matthew Wiener Developer [ctb]
+Maintainer: Francesca Petralia Developer <francesca.petralia@mssm.edu>
+NeedsCompilation: yes
+Repository: CRAN
+Date/Publication: 2016-01-28 00:21:12
