@@ -1,6 +1,4 @@
 #' Joint Random Forest for the simultaneous estimation of multiple related networks
-#'
-
 
 importance <- function(x,  scale=TRUE) {
   # --- Function importance is a modified version of function importance from R package randomForest
@@ -352,7 +350,10 @@ importance <- function(x,  scale=TRUE) {
     imp<-matrix(0,p,p)
     
     index<-seq(1,p)
-        
+    
+    vec1<-matrix(rep(genes.name,p),p,p)
+    vec2<-t(vec1); vec1<-c(vec1); vec2<-c(vec2)
+      
     for (j in 1:p){ 
       y<-X[,j];
       
@@ -371,9 +372,14 @@ importance <- function(x,  scale=TRUE) {
       imp[index,j]<-c(importance(rout))
     }
     
-      
-    out<-imp
-    colnames(out)<-rownames(out)<-genes.name
+    # --- Return importance score for each regulation
+    
+    imp<-c(imp);
+    out<-cbind(as.character(vec1),as.character(vec2),as.data.frame(imp),stringsAsFactors=FALSE)
+    out<-out[vec1!=vec2,]
+    i<-sort(out[,3],decreasing=TRUE,index=TRUE)
+    out<-out[i$ix,]
+    colnames(out)<-c(paste0('gene',1:2),'importance')
     return(out)
     
   }

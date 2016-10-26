@@ -143,6 +143,7 @@ void regTree(double *x, double *y, int mdim, int nsample, int *lDaughter,
     Free(nodestart);
     Free(jdex);
     Free(nodepop);
+    
 }
 
 /*--------------------------------------------------------------*/
@@ -186,8 +187,6 @@ void findBestSplit(double *x, int *jdex, double *y, int mdim, int nsample,
            weights[k]=sw[k];
     }
 
-   
-   
   
   for (i = 0; i < mtry; ++i) {
     critvar = 0.0;
@@ -200,15 +199,12 @@ void findBestSplit(double *x, int *jdex, double *y, int mdim, int nsample,
                   /* Rprintf("sum = %f\n",sumweights[k+1] );*/ 
                  } /* end for 1*/
      
-
         for (k = 0; k < last; ++k) {
-
                 if (sumweights[k+1] >= jk) {
                   if (sumweights[k] <= jk) {
                         kv=mind[k]; /* select variable */
                         wsel=weights[k];
-
-                  for (kk = 1; kk < last; ++kk) { /*    for2    */
+                for (kk = 1; kk < last; ++kk) { /*    for2    */
                      if (kk > k) { /*if 1*/
                       sww=weights[kk-1];
                       weights[kk-1]=weights[kk];
@@ -220,8 +216,6 @@ void findBestSplit(double *x, int *jdex, double *y, int mdim, int nsample,
                       }/*end if 1*/
                      weights[kk-1]=weights[kk-1]/(1-wsel);
                      } /*  end for2  */
-                     
-        
                      }
                   }
            }  /* end for */
@@ -339,5 +333,7 @@ void findBestSplit(double *x, int *jdex, double *y, int mdim, int nsample,
     Free(ut);
     Free(weights);
     Free(sumweights);
+    
+    
 }
 

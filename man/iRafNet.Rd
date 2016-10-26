@@ -7,43 +7,36 @@
 iRafNet(X, W, ntree, mtry,genes.name)
 }
 \arguments{
-\item{X}{\code{(n x p)} matrix containing expression levels for \code{n} patients and \code{p} genes.}
+\item{X}{\code{(n x p)} Matrix containing expression levels for \code{n} samples and \code{p} genes.}
 
-\item{W}{\code{(p x p)} matrix containing iRafNet sampling scores. Element \code{(i,j)} contains score for regulatory relationship \code{(i -> j)}. Scores must be non-negative. Larger value of sampling score corresponds to higher likelihood of gene \code{i} regulating gene \code{j}. Columns and rows of \code{W} must be in the same order as the columns of \code{X}. Sampling scores \code{W} are computed considering one prior data such as protein-protein interactions or gene expression from knock-out experiments.}
+\item{W}{\code{(p x p)} Matrix containing iRafNet sampling scores. Element \code{(i,j)} contains score for regulatory relationship \code{(i -> j)}. Scores must be non-negative. Larger value of sampling score corresponds to higher likelihood of gene \code{i} regulating gene \code{j}. Columns and rows of \code{W} must be in the same order as the columns of \code{X}. Sampling scores \code{W} are computed considering one prior data such as protein-protein interactions or gene expression from knock-out experiments.}
 
-\item{ntree}{numeric value: number of trees.}
+\item{ntree}{Numeric value: number of trees.}
 
-\item{mtry}{numeric value: number of potential regulators to be sampled at each tree node.}
+\item{mtry}{Numeric value: number of potential regulators to be sampled at each tree node.}
 
-\item{genes.name}{vector containing gene names. The order needs to match the columns of \code{X}.}
+\item{genes.name}{Vector containing gene names. The order needs to match the columns of \code{X}.}
 
 }
 \value{
-\code{out} \code{(p x p)} matrix of importance scores. Element \code{(i,j)} contains importance score for regulatory relationship \code{(i -> j)}.
+Importance score for each regulatory relationship. The first column contains gene name of regulators, the second column contains gene name of targets, and third column contains corresponding importance scores.
 }
 \description{
 This function fits iRafNet, a flexible unified integrative algorithm that allows information from prior data, such as protein-protein interactions and gene knock-down, to be jointly considered for gene regulatory network inference. This function takes as input only one set of sampling scores, computed considering one prior data such as protein-protein interactions or gene expression from knock-out experiments. Note that some of the functions utilized are a modified version of functions contained in the R package randomForest (A. Liaw and M. Wiener, 2002). }
 \examples{
 
- # --- Derive weighted networks via iRafNet
- 
-  n<-20                  # sample size for each data sets
+  # --- Generate data sets
+  n<-20                  # sample size
   p<-5                   # number of genes
   genes.name<-paste("G",seq(1,p),sep="")   # genes name
- 
-  # --- Generate data sets
- 
-  data<-matrix(rnorm(p*n),n,p)       # generate expression matrix
-  W<-abs(matrix(rnorm(p*p),p,p))          # generate score for regulatory relationships
+  data<-matrix(rnorm(p*n),n,p)      # generate expression matrix
+  W<-abs(matrix(rnorm(p*p),p,p))    # generate weights for regulatory relationships
  
   # --- Standardize variables to mean 0 and variance 1
-   
   data <- (apply(data, 2, function(x) { (x - mean(x)) / sd(x) } ))
 
   # --- Run iRafNet and obtain importance score of regulatory relationships
-  
   out<-iRafNet(data,W,mtry=round(sqrt(p-1)),ntree=1000,genes.name)
-
 
 }
 \references{

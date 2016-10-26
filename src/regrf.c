@@ -191,6 +191,9 @@ void regRF(double *x, double *y, int *xdim, int *sampsize,
     /* end of tree iterations=======================================*/
 
     for (m = 0; m < mdim; ++m) tgini[m] /= *nTree;
+    
+    
+  
 }
 
 /*----------------------------------------------------------------------*/
